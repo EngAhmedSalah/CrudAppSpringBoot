@@ -32,19 +32,26 @@ public class restController
         return employeeService.getEmployeeById(id);
     }
 
-//    @PostMapping("/employees/{id}")
-//    public Employee addEmployee(@RequestBody Employee employee)
-//    {
-//        //so just passed employee JSON object , set id to 0 it will save a new item instead of update
-//        employee.setId(0);
-//        employeeService.addEmployee(employee);
-//        return employee;
-//    }
+    @PostMapping("/employees")
+    public Employee addEmployee(@RequestBody Employee employee)
+    {
+        //so just passed employee JSON object , set id to 0 it will save a new item instead of update
+        employee.setId(0);
+        employeeService.addEmployee(employee);
+        return employee;
+    }
 
     @DeleteMapping("/employees/{id}")
     public String deleteEmployee(@PathVariable int id)
     {
         employeeService.deleteEmployee(id);
         return  "Deleted employee" + id;
+    }
+
+    @PutMapping("/employees")
+    public Employee updateEmployee(@RequestBody Employee employee)
+    {
+        employeeService.updateEmployee(employee);
+        return employee;
     }
 }

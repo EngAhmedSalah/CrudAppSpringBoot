@@ -59,4 +59,15 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO
 //        Query query = session.createQuery("insert into Employee (firstName , lastName , email) values ()")
         session.saveOrUpdate(employee);
     }
+
+
+    @Override
+    public void updateEmployee(Employee employee)
+    {
+//        Query query = session.createQuery("update  Employee set firstName=:a , lastName=:b , email=:c");
+//        query.setParameter("a" , employee.getEmail())
+          session.saveOrUpdate(employee);
+    }
+
+
 }
