@@ -1,4 +1,4 @@
-package com.crudAppBoot.demo.Services;
+package com.crudAppBoot.demo.Services.EmployeeService;
 
 import com.crudAppBoot.demo.DAO.EmployeeDAO;
 import com.crudAppBoot.demo.Entity.Employee;

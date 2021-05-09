@@ -1,12 +1,13 @@
 package com.crudAppBoot.demo.Rest;
 
-import com.crudAppBoot.demo.DAO.EmployeeDAO;
 import com.crudAppBoot.demo.Entity.Employee;
-import com.crudAppBoot.demo.Services.EmployeeService;
-import org.apache.catalina.LifecycleState;
+import com.crudAppBoot.demo.Services.EmployeeService.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -53,5 +54,14 @@ public class restController
     {
         employeeService.updateEmployee(employee);
         return employee;
+    }
+    @GetMapping("/hijri")
+    public String getHijriCalender()
+    {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Date date = new Date();
+        String url = "http://api.aladhan.com/v1/gToH?date="+formatter.format(date);
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(url , String.class);
     }
 }
